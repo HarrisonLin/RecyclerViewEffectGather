@@ -3,7 +3,4 @@
 
 ###效果一：RecyclerView滑动顶部渐变的效果，使用场景，直播应用
 
-![](http://s17.mogucdn.com/new1/v1/bmisc/71ed56b6f88943026d447bb285d2ba55/170009542437.png)
-
-[线上产品效果](http://v.qq.com/page/o/y/s/o01903jcnys.html)
-
+<embed src="http://static.video.qq.com/TPout.swf?vid=o01903jcnys&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
