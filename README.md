@@ -3,4 +3,4 @@
 
 ###效果一：RecyclerView滑动顶部渐变的效果
 
-![](http://img3.imgtn.bdimg.com/it/u=732107402,96027361&fm=15&gp=0.jpg)
+![gif](http://s17.mogucdn.com/new1/v1/bmisc/bf9144491db31fd61c1a95b45582bc9b/172576804352.gif)
