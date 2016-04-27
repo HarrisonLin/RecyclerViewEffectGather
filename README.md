@@ -5,4 +5,6 @@
 
   顶部的字体颜色随着滑动，会逐步变淡。
 
-![gif](http://s17.mogucdn.com/new1/v1/bmisc/bf9144491db31fd61c1a95b45582bc9b/172576804352.gif)
+|  | Demo | 线上应用场景 |
+| ------------ | ------------- | ------------ |
+| 效果 | ![gif](http://s17.mogucdn.com/new1/v1/bmisc/bf9144491db31fd61c1a95b45582bc9b/172576804352.gif)  | ![gif](http://s16.mogucdn.com/new1/v1/bmisc/ced878bb5ce806c3a04381e18f28bcb6/172578551316.gif) |
