@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_slide_body"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#eeeeee"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+    >
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="渐变颜色（RGB）"
+            android:textColor="@android:color/black"/>
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@id/tv_title"
+            android:background="#000000"
+        />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+    >
+
+        <TextView
+            android:id="@+id/r_tv_red_value"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="R(0)"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <SeekBar
+            android:id="@+id/red_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:max="255"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:id="@+id/r_tv_green_value"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="G(0)"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <SeekBar
+            android:id="@+id/green_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:id="@+id/r_tv_blue_value"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="B(0)"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <SeekBar
+            android:id="@+id/blue_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="确定"
+        android:textColor="@android:color/black"
+    />
+</LinearLayout>
+

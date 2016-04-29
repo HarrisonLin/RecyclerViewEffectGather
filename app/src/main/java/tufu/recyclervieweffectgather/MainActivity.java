@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements TopGradualFragmen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mFragment = new TopGradualFragment();
+        mFragment = TopGradualFragment.newInstance(1);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rl_content_body, mFragment)
                 .commit();
