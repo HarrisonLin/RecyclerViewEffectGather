@@ -18,6 +18,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import tufu.recyclervieweffectgather.dummy.DummyContent;
 import tufu.recyclervieweffectgather.dummy.DummyContent.DummyItem;
@@ -28,7 +32,7 @@ import tufu.recyclervieweffectgather.dummy.DummyContent.DummyItem;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class TopGradualFragment extends Fragment {
+public class TopGradualFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -36,11 +40,27 @@ public class TopGradualFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
+    private View mView;
     private RecyclerView recyclerView;
 
     private Paint mPaint;
     private int layerId;
 
+    private LinearLayout mSlideColorBody;
+
+    private SeekBar mRedBar;
+    private SeekBar mGreenBar;
+    private SeekBar mBlueBar;
+
+    private TextView mRedValue;
+    private TextView mGreenValue;
+    private TextView mBlueValue;
+
+    private int mColorRed = 0;
+    private int mColorBlue = 0;
+    private int mColorGreen = 0;
+
+    private ImageView mColorImageView;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -70,23 +90,38 @@ public class TopGradualFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        mView = inflater.inflate(R.layout.fragment_item_list, container, false);
 
+        recyclerView = getView(R.id.list);
         // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new RecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        Context context = mView.getContext();
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        recyclerView.setAdapter(new RecyclerViewAdapter(DummyContent.ITEMS, mListener));
 
         doTopGradualEffect();
 
-        return view;
+        // 颜色快
+        mSlideColorBody = getView(R.id.ll_slide_body);
+
+        mRedBar = getView(R.id.red_seekBar);
+        mGreenBar = getView(R.id.green_seekBar);
+        mBlueBar = getView(R.id.blue_seekBar);
+
+        mRedValue = getView(R.id.r_tv_red_value);
+        mGreenValue = getView(R.id.r_tv_green_value);
+        mBlueValue = getView(R.id.r_tv_blue_value);
+
+        mRedBar.setOnSeekBarChangeListener(this);
+        mGreenBar.setOnSeekBarChangeListener(this);
+        mBlueBar.setOnSeekBarChangeListener(this);
+
+        mColorImageView = getView(R.id.image_view);
+
+        return mView;
     }
 
 
@@ -105,6 +140,39 @@ public class TopGradualFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        switch (seekBar.getId()) {
+            case R.id.red_seekBar:
+                mColorRed = progress;
+                mRedValue.setText("R("+String.valueOf(mColorRed)+")");
+                break;
+            case R.id.green_seekBar:
+                mColorGreen = progress;
+                mGreenValue.setText("G("+String.valueOf(mColorGreen)+")");
+                break;
+            case R.id.blue_seekBar:
+                mColorBlue = progress;
+                mBlueValue.setText("G("+String.valueOf(mColorBlue)+")");
+                break;
+        }
+
+        int rgb = Color.rgb(mColorRed, mColorGreen, mColorBlue);
+
+        mColorImageView.setBackgroundColor(rgb);
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 
     /**
@@ -158,5 +226,15 @@ public class TopGradualFragment extends Fragment {
                 super.getItemOffsets(outRect, view, parent, state);
             }
         });
+    }
+
+
+    protected <T extends View> T getView(int id) {
+        T result = (T) mView.findViewById(id);
+        if (result == null) {
+            throw new IllegalArgumentException("view 0x" + Integer.toHexString(id)
+                    + " doesn't exist");
+        }
+        return result;
     }
 }
